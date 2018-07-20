@@ -6,6 +6,24 @@
 </head>
 <body>
 
+<p>Latest Mars News</p>
+<p>{{ mars_data.news_title }}</p>
+<p>{{ mars_data.news_p }}</p>
 
+
+<p><strong>Featured Mars Image</strong></p>
+<img src="{{ mars_data.featured_image_url}}" alt="featured_image" height="200" width="200">
+
+<p><strong>Current Weather on Mars</strong></p>
+<p>{{ mars_data.mars_weather }}</p>
+
+<p><strong>Mars Facts</strong></p>
+{{ mars_data.mars_facts }}
+
+<p><strong>Mars Hemispheres</strong></p>
+{% for mars_hemisphere in mars_data.hemisphere_image_urls  %}
+<img src="{{ mars_hemisphere.img_url}}" alt="{{ mars_hemisphere.title }}">
+<br>
+{% endfor %}
 </body>
 </html>
