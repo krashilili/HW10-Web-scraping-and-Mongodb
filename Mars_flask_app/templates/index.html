@@ -2,28 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">>
 </head>
+
 <body>
+<div class="container-fluid">
+    <div class="jumbotron">
+      <h1 class="display-4">Mission to Mars</h1>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Scrape New Data</a>
+      </p>
+    </div>
 
-<p>Latest Mars News</p>
-<p>{{ mars_data.news_title }}</p>
-<p>{{ mars_data.news_p }}</p>
+    <div class="row">
+        <div class="col">
+            <h3>Latest Mars News</h3>
+            <h4>{{ mars_data.news_title }}</h4>
+            <p>{{ mars_data.news_p }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Featured Mars img -->
+            <h3>Featured Mars Image</h3>
+            <img src="{{ mars_data.featured_image_url}}" alt="featured_image" class="featured_image">
+        </div>
+
+        <div class="col-md-4">
+            <!-- Mars weather -->
+
+            <div class="card mars-weather" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Current Weather on Mars</h5>
+                <p class="card-text">{{ mars_data.mars_weather }}</p>
+              </div>
+            </div>
+
+            <h4>Mars Facts</h4>
+            {{ mars_data.mars_facts|safe }}
+        </div>
+    </div>
+
+<hr>
+
+    <div class="container">
+    <h3>Mars Hemispheres</h3>
 
 
-<p><strong>Featured Mars Image</strong></p>
-<img src="{{ mars_data.featured_image_url}}" alt="featured_image" height="200" width="200">
+    {% for mars_hemisphere in mars_data.hemisphere_image_urls %}
+        {% if loop.index0 % 2 == 0 %}
+            <div class="row">
+        {% endif %}
 
-<p><strong>Current Weather on Mars</strong></p>
-<p>{{ mars_data.mars_weather }}</p>
 
-<p><strong>Mars Facts</strong></p>
-{{ mars_data.mars_facts }}
+        <div class="col-md-6">
+            <div class="card" style="width: 100%;">
+              <img class="card-img-top" src="{{ mars_hemisphere.img_url }}" alt="{{ mars_hemisphere.title }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ mars_hemisphere.title }}</h5>
+                </div>
+            </div>
+        </div>
 
-<p><strong>Mars Hemispheres</strong></p>
-{% for mars_hemisphere in mars_data.hemisphere_image_urls  %}
-<img src="{{ mars_hemisphere.img_url}}" alt="{{ mars_hemisphere.title }}">
-<br>
-{% endfor %}
+        {% if loop.index0 % 2 ==1 %}
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+
+</div>
 </body>
 </html>

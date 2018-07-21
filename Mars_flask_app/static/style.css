@@ -1,0 +1,12 @@
+table {
+    font-size: 12pt;
+}
+
+img.featured_image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.mars-weather {
+    margin-top: 40px;
+}

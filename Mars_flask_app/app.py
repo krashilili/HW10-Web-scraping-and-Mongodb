@@ -28,8 +28,10 @@ def view():
     mars_data.pop('_id')
     # return jsonify(mars_data)
     # return "Data stored to Mongodb!"
-    table = LH.fromstring(mars_data.get('mars_facts'))
-    mars_data['mars_facts']=table
+    # table = LH.fromstring(mars_data.get('mars_facts'))
+    html_table = mars_data.get('mars_facts')
+    html_table= html_table.replace('\n', '')
+    mars_data['mars_facts']=html_table
     return render_template('index.html',mars_data=mars_data)
 
 
