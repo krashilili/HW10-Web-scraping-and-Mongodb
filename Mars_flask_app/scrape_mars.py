@@ -36,7 +36,7 @@ def scrape(browser):
 
     html = browser.html
     soup = BS(html, 'html.parser')
-    time.sleep(5)
+    time.sleep(10)
     # extract the news items from the html
     news_items = soup.find('ul', class_='item_list')
     latest_news = news_items.find_all('li', class_='slide')[0]
