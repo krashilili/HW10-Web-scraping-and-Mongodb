@@ -1,5 +1,21 @@
 table {
-    font-size: 12pt;
+    border: 2px solid black;
+    /*font-size: 12pt;*/
+    width: 100%;
+}
+
+
+/* Overwrite the inline style */
+table.dataframe thead tr{
+    text-align: left !important;
+}
+
+.row{
+    margin-bottom:30px;
+}
+
+.display-4, .lead{
+    text-align: center;
 }
 
 img.featured_image {
@@ -7,6 +23,14 @@ img.featured_image {
     max-height: 100%;
 }
 
+.mars_facts{
+    margin-top: 30px;
+}
+
 .mars-weather {
     margin-top: 40px;
+}
+
+.mars_hemishpheres{
+    text-align: center !important;
 }

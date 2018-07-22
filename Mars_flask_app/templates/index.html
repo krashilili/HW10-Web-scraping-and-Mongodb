@@ -14,7 +14,7 @@
     <div class="jumbotron">
       <h1 class="display-4">Mission to Mars</h1>
       <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Scrape New Data</a>
+        <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
       </p>
     </div>
 
@@ -36,23 +36,23 @@
         <div class="col-md-4">
             <!-- Mars weather -->
 
-            <div class="card mars-weather" style="width: 18rem;">
+            <div class="card mars-weather" style="width: 100%;">
               <div class="card-body">
                 <h5 class="card-title">Current Weather on Mars</h5>
                 <p class="card-text">{{ mars_data.mars_weather }}</p>
               </div>
             </div>
 
-            <h4>Mars Facts</h4>
+            <h4 class="mars_facts">Mars Facts</h4>
             {{ mars_data.mars_facts|safe }}
         </div>
     </div>
 
-<hr>
+
 
     <div class="container">
-    <h3>Mars Hemispheres</h3>
-
+    <h3 class="mars_hemishpheres">Mars Hemispheres</h3>
+    <hr>
 
     {% for mars_hemisphere in mars_data.hemisphere_image_urls %}
         {% if loop.index0 % 2 == 0 %}
